@@ -116,10 +116,20 @@ function setLable(name) {
 //delete a particular element
 function deleteNode(button) {
   if (confirm("Do you want to delete this element?") == true) {
+    console.log(button.parentNode.parentNode.id);
     button.parentNode.parentNode.remove();
+    deleteFromArray(button.parentNode.parentNode.id);
   } else {
     return;
   }
+}
+function deleteFromArray(id){
+  for(let i=0;i<elements.length;i++){
+    if(elements[i].id===id){
+      elements.splice(i,1);
+    }
+  }
+  alert("Element has been deleted Successfully")
 }
 
 let draggable = document.querySelectorAll(".dragged");
